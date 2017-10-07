@@ -1,5 +1,7 @@
 import java.util.*;
 import java.io.*;
+
+// Wrong in order output,
 class Node {
     Node left;
     Node right;
@@ -34,7 +36,8 @@ class topview {
       		int lvl = q.level;
 
       		if (!ht.containsKey(lvl)) {
-      			System.out.print(n.data + " " + q.level  + " ");
+      			// System.out.print(n.data + " " + q.level  + " ");
+            System.out.print(n.data + " ");
       			ht.put(lvl, n.data);
       		}	
       		if (n.left != null) {      			
@@ -43,10 +46,10 @@ class topview {
       		if (n.right != null){
       		 	queue.add(new QueuePack(lvl-1, n.right));
       		}
-      		System.out.println();
+      		// System.out.println();
       	}
       	
-      	System.out.println();
+      	// System.out.println();
     }
 
     public static Node insert(Node root, int data) {
@@ -67,20 +70,20 @@ class topview {
         }
     }
     public static void main(String[] args) {
-        int[] d = {1,2,5,3,4,6};
-        //int[] d = {1,5,3,2,4,6};
+        // int[] d = {1,5,3,6,2,4};
+        int[] d = {1,2,5,3,6,4};
         
-        // Node root = null;
-        // for (int i = 0; i < d.length; i++) {
-        // 	root = insert(root, d[i]);
-        // }
+        Node root = null;
+        for (int i = 0; i < d.length; i++) {
+        	root = insert(root, d[i]);
+        }
 
-        Node root = new Node(1);
-        root.right = new Node(5);
-        root.right.left = new Node(3);
-        root.right.right = new Node(6);
-        root.right.left.left = new Node(2);
-        root.right.left.right = new Node(4);
+        // Node root = new Node(1);
+        // root.right = new Node(2);
+        // root.right.right = new Node(5);
+        // root.right.right.left = new Node(3);
+        // root.right.right.right = new Node(6);
+        // root.right.right.left.right = new Node(4);
         
         topView(root);
     }
